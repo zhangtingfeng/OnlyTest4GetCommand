@@ -48,7 +48,7 @@ axios.interceptors.response.use((r)=>{
 
 
 
-
+https://blog.csdn.net/zzm1602257468/article/details/106873513  npm install v-viewer --save  试试这个代码。关于图片返回，可以考虑实质上生成jpg文件。定期删除就行了，生成大小图片。关键是做的效果能否可以
 
 
 
