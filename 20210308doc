@@ -51,7 +51,22 @@ axios.interceptors.response.use((r)=>{
 https://blog.csdn.net/zzm1602257468/article/details/106873513  npm install v-viewer --save  试试这个代码。关于图片返回，可以考虑实质上生成jpg文件。定期删除就行了，生成大小图片。关键是做的效果能否可以
 
 https://www.cnblogs.com/Baker-Street/p/12918295.html原因很简单:就是当认证失败时,,统一的异常处理是要返回一个json格式结果集,,但是该接口规定了返回的类型为MediaType的图片类型,,两者冲突了
-
+/**
+	 * base64转inputStream
+	 * @param base64string
+	 * @return
+	 */
+	private static InputStream BaseToInputStream(String base64string){  
+	    ByteArrayInputStream stream = null;
+		try {
+		    BASE64Decoder decoder = new BASE64Decoder(); 
+		    byte[] bytes1 = decoder.decodeBuffer(base64string);  
+		    stream = new ByteArrayInputStream(bytes1);  
+		} catch (Exception e) {
+		// TODO: handle exception
+		}
+	        return stream;  
+	    } 
 
 @RestController
 @Slf4j
