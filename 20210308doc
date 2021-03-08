@@ -103,7 +103,27 @@ public class ImageController {
 }
 
 
+java 上传图片 并压缩图片大小 https://my.oschina.net/airship/blog/4327986
+缩略图压缩文件jar包
+<!-- 图片缩略图 -->
+            <dependency>
+                <groupId>net.coobird</groupId>
+                <artifactId>thumbnailator</artifactId>
+                <version>0.4.8</version>
+            </dependency>
+按指定大小把图片进行缩放（会遵循原图高宽比例）
+//按指定大小把图片进行缩和放（会遵循原图高宽比例） 
+        //此处把图片压成400×500的缩略图
+        Thumbnails.of(fromPic).size(400,500).toFile(toPic);//变为400*300,遵循原图比例缩或放到400*某个高度
+按照指定比例进行缩小和放大
+//按照比例进行缩小和放大
+        Thumbnails.of(fromPic).scale(0.2f).toFile(toPic);//按比例缩小
+        Thumbnails.of(fromPic).scale(2f);//按比例放大
+图片尺寸不变，压缩图片文件大小
 
+//图片尺寸不变，压缩图片文件大小outputQuality实现,参数1为最高质量
+        Thumbnails.of(fromPic).scale(1f).outputQuality(0.25f).toFile(toPic);
+我这里只使用了 图片尺寸不变，压缩文件大小 源码
 
 
 https://www.cnblogs.com/chenzheng8975/p/10826923.html SpringBoot2+Druid+MyBatis+MySql实现增删改查
