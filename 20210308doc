@@ -1,0 +1,64 @@
+
+https://www.yuque.com/fcant/java/fqlhgh 通过IDEA连接数据表生成Java POJO对象
+https://blog.csdn.net/DD7458/article/details/80542494  druid连接池以及使用druid连接池和QueryRunner实现增删改查
+
+
+https://www.jb51.net/article/143767.htm 详解vue.js根据不同环境(正式、测试)打包到不同目录
+if (process.env.NODE_ENV === 'development') {
+
+    // dev
+
+} else {
+
+    // build
+
+}
+判断location.hostname    host配置 axios.defaluts.baseurl==='http://www.baidu.com'
+axios.defaults.headers.post['Content-type'] = 'application/x-www-form-urlencoded'
+
+axios.interceptors.request.use(
+  request => {
+    let token = JSON.parse(localStorage.getItem("token"));
+    if (token) {
+      request.headers['Token'] = token;
+    }
+    return request;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
+VUE中请求头的设置
+axios.interceptors.response.use((r)=>{
+	let token = JSON.parse(localStorage.getItem('token'));
+	if(r.headers.token){
+		const setToken = JSON.stringify(r.headers.token)
+		localStorage.setItem("token",setToken)
+	}
+	if(r.data.code == 503 ){
+		localStorage.clear();
+		location.href = '/Login'
+	}
+	return r;
+	},function(error){
+		return Promise.reject(error)
+	}
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.cnblogs.com/chenzheng8975/p/10826923.html SpringBoot2+Druid+MyBatis+MySql实现增删改查
+
+https://blog.csdn.net/weixin_42601136/article/details/107436726 使用JDBC实现增删改查（加入Druid德鲁伊连接池）
