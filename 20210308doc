@@ -50,10 +50,42 @@ axios.interceptors.response.use((r)=>{
 
 https://blog.csdn.net/zzm1602257468/article/details/106873513  npm install v-viewer --save  试试这个代码。关于图片返回，可以考虑实质上生成jpg文件。定期删除就行了，生成大小图片。关键是做的效果能否可以
 
+https://www.cnblogs.com/Baker-Street/p/12918295.html原因很简单:就是当认证失败时,,统一的异常处理是要返回一个json格式结果集,,但是该接口规定了返回的类型为MediaType的图片类型,,两者冲突了
 
 
+@RestController
+@Slf4j
+@Api(tags = SwaggerConfig.TAG_IMAGE)
+@RequestMapping(SwaggerConfig.TAG_IMAGE)
+public class ImageController {
 
+    @Resource
+    private HttpServletResponse response;
 
+    @GetMapping(value = "/getImage")
+    @ApiOperation("获取图片-以ImageIO流形式写回")
+    public void getImage() throws IOException {
+        OutputStream os = null;
+        try {
+//        读取图片
+            BufferedImage image = ImageIO.read(new FileInputStream(new File("F:\\谷歌下载\\未命名文件.png")));
+            response.setContentType("image/png");
+            os = response.getOutputStream();
+
+            if (image != null) {
+                ImageIO.write(image, "png", os);
+            }
+        } catch (IOException e) {
+            log.error("获取图片异常{}",e.getMessage());
+        } finally {
+            if (os != null) {
+                os.flush();
+                os.close();
+            }
+        }
+    }
+
+}
 
 
 
