@@ -1,1 +1,58 @@
 各种按钮的按下状态要做出，浮动按钮在移动上面没有效果
+
+
+GUI 样式 (GUI Style)        
+
+GUI 样式 (GUI Style) 是一组自定义属性，用于 UnityGUI。一个 GUI 样式 (GUI Style) 定义了一个 UnityGUI 控件的外观。
+
+
+检视器 (Inspector) 中的 GUI 样式 (GUI Style)
+如需向一个以上的控件添加样式，请使用 GUI 皮肤 代替 GUI 样式 (GUI Style)。有关 UnityGUI 的更多信息，请参阅 GUI 脚本指南。
+
+属性
+
+属性:	功能：
+名称 (Name)	用于指代特定样式的文本字符串
+常规 (Normal)	默认状态下控件的背景图像和文本颜色
+悬停 (Hover)	鼠标停留在控件上时的背景图像和文本颜色
+激活 (Active)	鼠标主动点击控件时的背景图像和文本颜色
+聚焦 (Focused)	控件拥有键盘焦点时的背景图像和文本颜色
+启用常规 (On Normal)	启用状态下控件的背景图像和文本颜色
+启用悬停 (On Hover)	鼠标停留在启用的控件上时的背景图像和文本颜色
+启用激活 (On Active)	鼠标主动点击启用的控件时的属性
+启用聚焦 (On Focused)	启用的控件拥有键盘焦点时的背景图像和文本颜色|
+边框 (Border)	未受控件形状缩放影响的背景 (Background) 图像每条边的像素数值
+填充 (Padding)	控件各边缘与内容起始位置之间的像素空间。
+边距 (Margin)	以该样式渲染的元素和其他所用 GUI 控件 (GUI Control) 之间的边距。
+溢出 (Overflow)	添加到背景图像中的额外空间。
+字体 (Font)	以该样式对所有文本使用的字体 (Font)
+图像位置 (Image Position)	背景图像和文本的组合方式。
+对齐 (Alignment)	标准文本对齐选项。
+自动换行 (Word Wrap)	如果启用，到达控件边缘的文本会自动跳至下一行
+文本裁剪 (Text Clipping)	如果启用了自动换行 (Word Wrap)，请选择如何处理超出控件边界的文本
+溢出 (Overflow)	超出控件边缘的所有文本将继续留在边界以外
+裁剪 (Clip)	超出控件边界的所有文本都将隐藏起来
+内容偏移 (Content Offset)	不仅其他所有属性而且内容 (Content) 也被移置的 X 轴和 Y 轴上的像素的量
+X	左右偏移
+Y	上下偏移
+固定宽度 (Fixed Width)	控件宽度的像素数量，其会覆盖所提供 的任何 Rect() 值
+固定高度 (Fixed Height)	控件 (Control) 高度的像素数量，其会覆盖所提供 的任何 Rect()值
+拉伸宽度 (Stretch Width)	如果启用，则可以在水平方向上延伸使用该样式的控件以获得更好的布局。
+拉伸高度 (Stretch Height)	如果启用，则可以在垂直方向上延伸使用该样式的控件以获得更好的布局。
+详细信息
+
+GUIStyles 通过脚本声明，并在每个实例的基础上进行修改。如果想要使用一个或少量自定义样式的控件，您可以在脚本中声明该自定义样式，然后提供 该样式作为控件功能参数。这样这些控件就会以您定义的样式显示。
+
+首先，必须在脚本中声明一个 GUI 样式 (GUI Style)。
+
+/* 声明 GUI 样式 (GUI Style) */var customGuiStyle : GUIStyle;...
+当该脚本附加到游戏对象时，您会发现在检视器 (Inspector) 中可修改自定义样式。
+
+
+在脚本中声明的样式可以在脚本的每个实例中进行修改
+现在，当您想让特定控件使用该样式时，只需提供 该样式的名称作为该控件功能的最后一个参数。
+
+...function OnGUI () {// 提供 样式的名称作为最后参数使用GUILayout.Button ("I am a custom-styled Button", customGuiStyle);// 如果不想应用样式，请不要提供 名称GUILayout.Button ("I am a normal UnityGUI Button without custom style");}
+
+如代码示例所创建的，两个按钮，其中一个带有样式
+有关使用 UnityGUI 的更多信息，请参阅 GUI 脚本指南。
